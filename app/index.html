@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.5 user-scalable=yes">
+  <title>7&deg; Encontro  de Especialistas em Infec&ccedil;&otilde;es no Paciente Cr&iacute;tico</title>
+  <link rel="stylesheet" href="lib/css/jquery.mobile-1.3.1.css">
+  <link rel="stylesheet" href="lib/css/css_login_iPad.css">
+  <script src="cordova-2.2.0.js"></script>
+  <script src="lib/js/jquery.js"></script>
+  <script src="lib/js/jquery.mobile-1.3.1.js"></script>
+  <script src="lib/js/php.js"></script>
+  <script src="lib/js/mobile_pages/js_database.js"></script>
+  <script src="lib/js/mobile_pages/js_main.js"></script>
+  <script>
+  OpenDataBase();
+  handleCreateDb();
+  handleStateMachineMain('getUserOnSql');
+  
+		
+	function handlerEraseDb()
+	{
+		
+			db.transaction(handlerEraseDbTransaction, handleDbError);
+	}
+	
+  </script>
+  
+  
+  <style>.panel-content { padding:15px; }	
+  	
+	
+  </style>
+  
+</head>
+<body>
+ 
+<div data-role="page" class="login2" id="login" >
+	
+    
+    <div class="form-login" id="baseLogin">
+    	
+        
+       <ul data-role="listview" data-autodividers="true" data-filter="true" data-inset="true" id="ulUsuarios" style="height:500px; overflow:scroll;"><br></ul>
+       <div><p><a href="#cadastro"><input type="button" value="Cadastrar novo usuário"></a></p></div>
+       <div><p ><a href="#" onClick="handlerEraseDb();">Recarregar Dados</a></p></div>
+    </div>
+    
+    
+</div>
+
+<div data-role="page" class="login" id="cadastro">
+	
+    <div class="form-login" style="top:200px;">
+    	<ul id="ulCadastroUser">
+        	<li><input type="text" name="fieldNome" id="fieldNome" placeholder="Cadastre seu Nome" value=""></li>
+            <li><input type="text" name="fieldEmail" id="fieldEmail" placeholder="Cadastre seu E-mail" value=""></li>
+            <li><input type="text" name="fieldCrm" id="fieldCrm" placeholder="Cadastre seu CRM" value=""></li>
+            <li><input type="text" name="fieldTelefone" id="fieldTelefone" placeholder="Cadastre seu Telefone" value=""></li>
+            <li class="bt-acesso-login" id="bt_cadastro" onClick="handleStateMachineMain('handleCadUser');"><img src="images/template_ipad/images/bt_confirmar.png"></li>
+          
+        </ul>
+        
+        <div style="width:360px;padding-left:40px;"><p><a href="#login"><input type="button" value="Efetuar login"></a></p></div>
+        
+         <div style="position:absolute; left:120px; bottom:30px;z-index:999;">
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+    </div>
+   
+</div>
+
+
+<!-- ALERT -->
+<div class="ui-ipad-alert" id="id-alert">
+ 	<div class="alert-bg-color"></div>
+      <div class="alert-base">
+        <div class="alert-top" id="alert-top-message"></div>
+        <div class="alert-content" id="alert-content-message"></div>
+        <div class="alert-closed" id="alert-content-message"></div>
+      </div>
+</div>
+
+
+</body>
+</html>
