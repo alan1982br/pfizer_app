@@ -1,0 +1,208 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html {
+height: 100%;
+width: 100%;
+}
+
+* html{
+	height:100%;
+	width: 100%;
+}
+
+body,td,th {
+	font-family: verdana;
+	font-size: 11px;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	height:100%;
+	width: 100%;
+}
+
+li
+{
+	list-style:none;
+	
+}
+
+input
+{
+	width:400px;
+	background-color:#D8D8D8;
+	color:#333;
+	height:35px;
+	border:1px solid #ccc;
+	border-radius:5px;
+	padding:5px;
+	font-size:13px;
+	color:#666; 
+}
+.div_modal
+{
+	position:absolute;
+	height:100%;
+	width: 100%;
+	left:0px;
+	top:0px;
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.81) 0%, rgba(0,0,0,0.95) 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0.81)), color-stop(100%,rgba(0,0,0,0.95)));
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.95) 100%);
+	background: -o-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.95) 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.95) 100%);
+	background: radial-gradient(ellipse at center,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.95) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf000000', endColorstr='#f2000000',GradientType=1 );
+	opacity:.5;
+	display:none;
+}
+.mainPrincipal
+{
+	position:relative;
+	background-image:url(../../images/img_fundo.jpg);
+	background-position:center;
+	height:100%;
+	width:100%;
+}
+
+
+.div_logo_home
+{
+	position:absolute;
+	width:418px;
+	height:400px;
+	left:50%;
+	top:50%;
+	margin-left:-209px;
+	margin-top:-200px;
+}
+
+.div_info_phone{
+	background-image:url(../../images/img_phone.png);
+	background-repeat:no-repeat;
+	width:110px;
+	height:33px;
+	float:left;
+	font-size:14px;
+	color:#FFF;
+	padding-left:33px;
+	line-height:2.4em;
+}
+
+.div_info_mail{
+	background-image:url(../../images/img_mail.png);
+	background-repeat:no-repeat;
+	width:180px;
+	height:33px;
+	float:left;
+	font-size:14px;
+	color:#FFF;
+	padding-left:33px;
+	line-height:2.4em;
+}
+.div_botao_acesso
+{
+	height:55px;
+	cursor:pointer;
+	
+}
+.bt_login_index
+{
+	margin-left:150px;
+}
+.bt_login
+{
+	margin-left:200px;
+	margin-top:110px;
+	width:80px;
+}
+.left_bt
+{
+	background-image:url(../../images/img_left_bt.png);
+	width:14px;
+	height:55px;
+	background-repeat:no-repeat;
+	float:left;
+}
+.repeat_bt
+{
+	background-image:url(../../images/img_repete_bt.png);
+	height:55px;
+	background-repeat:repeat-x;
+	float:left;
+	line-height:3.5em;
+	font-size:16px;
+	font-family:"Myriad Pro";
+	color:#000;
+	padding:0 20px 0 20px;
+}
+.rigth_bt
+{
+	background-image:url(../../images/img_right_bt.png);
+	width:14px;
+	height:55px;
+	background-repeat:no-repeat;
+	float:left;
+}
+
+
+
+/* Base Login */
+.div_base_login
+{
+	position:absolute;
+	background-image:url(../../images/img_base_login.png);
+	background-repeat:no-repeat;
+	width:490px;
+	height:467px;
+	display:none;
+	
+	left:50%;
+	top:50%;
+	margin-left:-245px;
+	margin-top:-230px;
+}
+
+.div_base_itens_Login
+{
+	position:relative;
+	top:100px;
+}
+
+.label_login
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#999;
+}
+
+.div_input
+{
+	padding-top:5px;
+	padding-bottom:30px;
+	
+}
+.div_x
+{
+	position:absolute;
+	right:15px;
+	top:25px;
+	background-image:url(../../images/img_x.png);
+	background-repeat:no-repeat;
+	width:22px;
+	height:24px;
+	cursor:pointer;
+}
+
+.message
+{
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	color:#999;
+	text-align:center;
+	font-size:13px;
+	line-height:3em;
+}

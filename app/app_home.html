@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="iso-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>7&deg; Encontro  de Especialistas em Infec&ccedil;&otilde;es no Paciente Cr&iacute;tico</title>
+  <link rel="stylesheet" href="lib/css/jquery.mobile-1.3.1.css">
+  <link rel="stylesheet" href="lib/css/css_login_iPad.css">
+  <script src="lib/js/jquery.js"></script>
+  <script src="lib/js/jquery.mobile-1.3.1.js"></script>
+  <script src="lib/js/php.js"></script>
+  <script src="lib/js/mobile_pages/js_database.js"></script>
+  <script src="lib/js/mobile_pages/js_main.js"></script>
+  <script src="lib/js/mobile_pages/js_menu.js"></script>
+  <script src="lib/js/mobile_pages/js_agenda.js"></script>
+  <script src="lib/js/mobile_pages/js_agenda2.js"></script>
+  <script src="lib/js/mobile_pages/js_notas.js"></script>
+  <script src="lib/js/mobile_pages/js_perguntas.js"></script>
+  <script src="lib/js/mobile_pages/js_estudos.js"></script>
+  <script src="lib/js/mobile_pages/js_pesquisa.js"></script>
+  <script src="lib/js/mobile_pages/js_pesquisa_2.js"></script>
+  <script src="lib/js/mobile_pages/js_pesquisa_3.js"></script>
+  <script src="cordova-2.2.0.js"></script>
+
+  <script type="application/javascript">
+    $( document ).on( "pageinit", function( event ) {
+    if (navigator.userAgent.match(/(iPad|iPhone);.*CPU.*OS 7_\d/i)) {
+      $('.ui-page').css('marginTop','20px');
+      $('.mobile div').css({'marginTop':'20px', 'marginLeft': '-15px'});
+      $('.mobile button').css({'top':'18px', 'left': '5px'});
+      $("body").addClass("ios7");
+      $('html').append('<div id="ios7statusbar"/>');
+    }
+  });
+  </script>
+  
+  <!--<script type="text/javascript" charset="utf-8" src="ChildBrowser.js"></script> -->
+  <script language="javascript1.1">
+  	
+	//handleCreateDb();
+	OpenDataBase();
+	handleStateMachineMain('GetUserDataOnSqlLite');
+	//handeGetDadosUsuarios();
+	/*var corpoTexto;
+	var usuarioId;
+	var salaId;
+	
+	function handleGiveDataUser(e)
+	{
+		usuarioId = e[0];
+		//alert(e[0]);
+		handeGetDadosUsuariosSalas(e[0]);
+		
+		//alert(e);
+		
+		corpoTexto = '<li>Prezado (a) Dr. ( a), <strong>'+e[3]+'</strong><br><br>'+
+		'Seja Bem-Vindo (a) Porto de Galinhas!<br><br>'+
+		
+		'Agradecemos sua participação no “Fórum Sanofi Diabetes” nos dias 19 e 20 de Julho de 2013. A seguir, informações importantes sobre sua estada:<br><br>'+
+		
+		'Seu pacote inclui diárias em apto Single com Sistema All Inclusive no período de <strong>19 a 21 de Julho de 2013.</strong><br><br>'+
+		
+		'<div style="color:#00F"><em>* Extras correrão por conta do convidado (a), devendo ser pagos no ato do check-out.</em></div><br>'+
+		
+		'Para melhor atendê-lo (a), nosso <strong>Hospitality Desk</strong> estará disponível durante o período do evento, na <strong>Sala Brennand 7</strong>. As coordenadoras da <strong>Plenitude Eventos, Cristina Carmona e Izabel Roque</strong> estarão a sua disposição.<br><br>'+
+		
+		'<div style="color:#00F"><em>Em virtude de vossa participação neste evento ser patrocinada pela Sanofi e ter caráter exclusivo de educação/informação científica, informamos que se, eventualmente, V.Sa. manifestar a intenção de participar deste evento acompanhado, as despesas incorridas por conta do acompanhante serão de responsabilidade de V.Sa.</em></div><br>'+
+		
+		'A Sanofi espera que sua participação seja muito produtiva levando conhecimento e oferecendo a oportunidade de conviver com outros colegas, trocar experiências pessoais e acima de tudo profissionais.<br><br>'+
+		
+		'Tenha uma excelente estada em Porto de Galinhas!<br><br>'+
+		
+		'<strong>Conte sempre conosco!!!</strong><br><br>'+
+		
+		'Atenciosamente,<br><strong>Equipe Sanofi</strong></li>'+
+		'<li data-role="list-divider">As salas que você deverá visitar durante sua estada no Evento serão:</li>';
+	
+		$('#ulInfo').append(corpoTexto);
+		$('#ulInfo').listview('refresh');
+		//dadosUsuario = e;
+		
+		//db.transaction(handleGetDataDbSuccess, handleGetDataDbError);
+	}
+		
+		
+	function handleGiveDataUsuariosSalas(e)
+	{
+		salaId = e[3];
+		corpoTexto ='<li><strong>- Ariano Suassuna</strong>'+
+		'<br><br><strong>- '+e[0]+'</strong>'+
+		'<br><br><strong>- '+e[1]+'</strong></li>';
+		
+		$('#ulInfo').append(corpoTexto);
+		$('#ulInfo').listview('refresh');
+		
+	}
+	
+	
+	function handleMax()
+	{
+		cordova.exec("ChildBrowserCommand.showWebPage", "http://www.maxexperience.com.br/");
+		
+	};
+		
+		
+	function handlerEraseDb()
+	{
+		if(confirm('Clicando em OK, você estará excluindo todos os seus dados do iPad, deseja continuar?'))
+		{
+			db.transaction(handlerEraseDbTransaction, handleDbError);
+		}
+	}
+	*/
+	
+	//$('#notas').on('pageinit', alert('Adsas'));
+	
+	function reseteUl()
+	{
+		$('#pageDetalheUl').empty();
+		//$('#pageNotasUl').empty();
+			
+	}
+
+  function backMenuPesquisa()
+  {
+         //  $('#pesquisa').empty();
+           $.mobile.changePage( "#pesquisa_menu", { transition: "fade"});
+          handleCreateElementsMenuPesquisa();
+      
+  }
+	
+	
+	function handleVideo(e)
+	{
+		handlePauseVídeo1();
+		if(e == 'video2')
+		{
+			$('#movie').attr('src', 'videos/Vide_01_Title_01.mp4');
+			//$('#movie').play();
+		}
+		$.mobile.changePage( "#page-view-video", { transition: "fade"});
+	}
+	
+	
+	function handleResetVideo()
+	{
+		
+		$('video')[1].pause();
+	}
+	
+	function handleMax()
+	{
+		cordova.exec("ChildBrowserCommand.showWebPage", "http://www.maxexperience.com.br/");
+		
+	};
+		
+		
+	function handlerEraseDb()
+	{
+		if(confirm('Clicando em OK, você estará excluindo todos os seus dados do iPad, deseja continuar?'))
+		{
+			db.transaction(handlerEraseDbTransaction, handleDbError);
+		}
+	}
+	
+	function handlePauseVídeo1()
+	{
+		$('video')[0].pause();
+	}
+  </script>
+  <style>.panel-content { padding:15px; }</style>
+  
+</head>
+<body>
+	
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------HOME---------------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="home" data-theme="g" >
+ 
+       <!-- header -->
+         <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:-80px;">
+                <a href="#defaultpanel" onClick="handlePauseVídeo1()">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center; line-height:3em;" >
+                Seja bem-vindo
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content"> <!--id="base-bg" class=""-->
+       		
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+                  <video id="movie2" width="100%" height="700px" preload controls >
+                  <source src="videos/ipad_7o_Encontro.mp4" />
+                </video> 
+
+              <!--   <img src="images/template_ipad/images/img_bg_home.jpg" id="menu" width="100%" height="700px">-->
+
+            </div>
+        
+       </div>
+       
+       
+       <!-- Menu  -->
+      <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+        	 <div style="position:absolute; left:120px; top:620px;;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+       		  <div style="position:absolute; background-color:#275ea1; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" data-divider-theme="g" id="ulMenuHome" ></ul>
+        </div>
+		
+    
+ 	</div>
+ 	
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------AGENDA-------------- -->
+    <!-- ---------------------------------- -->
+	
+  <div data-role="page" id="agenda" data-theme="g">
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel" onClick="reseteUl();">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+            	Agenda 25/07/2014
+            </div>
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="g" style="margin-left:-4px; padding:5px;">
+            <div style="border-radius:10px; padding:5px; " id="boas-vindas" >
+                 <ul data-theme="c" style="padding-left=-50px;"data-role="listview" data-inset="true" id="ulAgenda"></ul>
+            </div>
+       </div>
+       
+       
+       <!-- Menu  -->
+       <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+        	 <div style="position:absolute; left:120px; top:620px;;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+       		  <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" id="ulMenuAgenda" ></ul>
+            
+            
+            
+            
+        </div>
+		
+ 	</div>
+    
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------AGENDA2-------------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="agenda2" data-theme="g" >
+        
+        <!-- header -->
+        <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel" onClick="reseteUl();">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                        </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+            	Agenda 26/07/2014
+            </div>
+		</div>
+        
+        
+        <!-- Content -->
+        <div data-role="content" data-theme="g" style="margin-left:-4px; padding:5px;">
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+                <ul data-theme="c" data-role="listview" data-inset="true" id="ulAgenda2"></ul>
+            </div>
+        </div>
+        
+        
+        <!-- Menu  -->
+        <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+            
+            <div style="position:absolute; left:120px; top:620px;;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+            
+            <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" id="ulMenuAgenda2" ></ul>
+            
+            
+            
+            
+        </div>
+		
+ 	</div>
+
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------Estudos--------------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="aulas" data-theme="g" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+                Estudos
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;"> <!--id="base-bg" class=""-->
+       		
+        	<div align="center" ><strong><br> Selecione aulas que deseja receber posteriormente por e-mail e clique em SALVAR no final da página</strong></div>
+            <div style="border-radius:10px; padding:5px;" >
+            	<ul  data-role="listview" data-inset="true" id="pageEstudosContent"></ul>
+                 
+                  <div style="border-radius:10px; padding:15px; text-align:justify;" >A área de Informações Médicas é uma área global formada por profissionais da saúde (principalmente farmacêuticos) e tem o papel estratégico ao fornecer informações científicas bem-balanceadas, com caráter não promocional (relacionadas estritamente aos produtos Pfizer) para médicos, farmacêuticos e dentistas. Os materiais enviados são, em sua maioria, documentos científicos que são o resumo dos principais e mais atuais estudos sobre um determinado assunto.
+                  <br><br>
+                  <strong><em>infomed@pfizer.com</em></strong>
+                  </div>
+                <input type="button" name="" id="" value="Salvar" data-theme="b" onClick="handleValidaEstudos()">
+            </div>
+        
+       </div>
+       
+       
+        <!-- Menu  -->
+     <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+        	 <div style="position:absolute; left:120px; top:620px;;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+       		  <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" data-divider-theme="g" id="ulMenuAulas" ></ul>
+           
+        </div>
+		
+ 	</div>
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------NOTAS--------------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="notas" data-theme="c" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel" onClick="reseteUl();">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center; padding-top:10px;" >
+                Anota&ccedil;&otilde;es
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;">
+       
+           
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+                 <ul data-role="listview" data-inset="true" id="pageNotasUl"  data-theme="c"></ul>
+            </div>
+        
+       </div>
+       
+       
+         <!-- Menu  -->
+       <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+        	 <div style="position:absolute; left:120px; top:620px;;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+       		  <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" data-theme="g" id="ulMenuNotas" ></ul>
+        </div>
+		
+ 	</div>
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------PERGUNTAS----------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="perguntas" data-theme="g" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+                Perguntas
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+      <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;">
+       
+           
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+                 <ul data-role="listview" data-inset="true" id="pagePerguntasUl"  data-theme="c"></ul>
+            </div>
+        
+       </div>
+       
+       
+         <!-- Menu  -->
+      <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+        	 <div style="position:absolute; left:120px; top:620px;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+       		  <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" data-divider-theme="g" id="ulMenuPerguntas" ></ul>
+        </div>
+		
+ 	</div>
+ 
+
+ <!-- ---------------------------------- -->
+    <!-- --------------PESQUISA MENU----------- -->
+    <!-- ---------------------------------- -->
+  <div data-role="page" id="pesquisa_menu" data-theme="g" >
+  
+    
+          <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g" style="height:45px; margin-top:0px; line-height:2em;"  >
+  
+            <div style="float:left; padding:5px;">
+                <a href="#defaultpanel">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+              PESQUISAS
+            </div>
+      
+    </div>
+        
+       <!-- Content -->
+      <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;">
+       
+           
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+                       <div style="border-radius:10px; padding:5px;" id="pagePesquisaMenusUl" data-theme="c" >
+                       </div>
+                  
+            </div>
+        
+       </div>
+ 
+           <!-- Menu  -->
+      <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-repeat:no-repeat; background-size:276px 48px;">
+        
+           <div style="position:absolute; left:120px; top:620px;z-index:999; " >
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+       
+            <div style="position:absolute; background-color:#3e78bc; height:auto;top:219px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:568px; background-size:100%;"></div>
+            <ul data-role="listview" data-divider-theme="g" id="ulMenuPesquisa" ></ul>
+        </div>
+    
+  </div>
+  <!-- ---------------------------------- -->
+
+ 
+ 	<!-- ---------------------------------- -->
+    <!-- --------------PESQUISA------------ -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="pesquisa" data-theme="g" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  style="height:42px; margin-top:0px; line-height:2em;">
+                   
+            <a data-rel="" data-icon="back" style="height:40px;" data-direction="fade" onClick="backMenuPesquisa();" >voltar</a>
+                   
+            <div style="text-align:center;padding-top:10px;" >
+                Pesquisa 1 - 7&deg; Encontro  de Especialistas em Infec&ccedil;&otilde;es no Paciente Cr&iacute;tico
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;"> <!--id="base-bg" class=""-->
+       		
+        
+           
+            <div style="padding:16px;" id="boas-vindas" >
+                <div style="padding:10px;" id="nomeDrPesquisa"></div>
+                 <p style="padding:10px;">
+É muito importante sabermos a sua opinião sobre o nosso evento. Dessa forma poderemos atendê-los cada vez melhor. Não é necessário identificar-se. Muito obrigada!
+</p>
+					<ul data-role="listview" >
+                    <li data-role="list-divider">PESQUISA PRIMEIRO DIA :</li>
+                    <li>
+                        <label for="pergunta_1" class="select" id="label_pergunta_1"><strong>1)</strong> Qual &eacute; a sua  especialidade:</strong> </label>
+                        <select name="pergunta_1" id="pergunta_1" data-native-menu="false">
+                            <option value="">Selecione</option>
+                            <option value="Especialista em cuidados  intensivos">Especialista em cuidados  intensivos</option>
+                            <option value="Especialista em doen&ccedil;as  infecciosas">Especialista em doen&ccedil;as  infecciosas</option>
+                            <option value="Outra">Outra</option>
+                        
+                        </select>
+                    </li>
+                    
+                    <li>
+                        <label for="pergunta_2" class="select" id="label_pergunta_2"><strong>2)</strong> Quais t&oacute;pico voc&ecirc;  achou mais interessante e relevante desde o Primeiro Dia ( 25 de Julho 2014)?</strong></label>
+                        <select name="pergunta_2" id="pergunta_2" data-native-menu="false">
+                            <option value="">Selecione</option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] A  individualiza&ccedil;&atilde;o da Terapia na Sepse Grave&nbsp;  - Apresentado por: Dr. Ederlon Rezende">[ Sess&atilde;o Plen&aacute;ria ] A  individualiza&ccedil;&atilde;o da Terapia na Sepse Grave&nbsp;  - Apresentado por: Dr. Ederlon Rezende</option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] Import&acirc;ncia  PK/PD atualmente e a individualiza&ccedil;&atilde;o da terapia antimicrobiana&nbsp; - Apresentado por: Dr. David Nicolau">[ Sess&atilde;o Plen&aacute;ria ] Import&acirc;ncia  PK/PD atualmente e a individualiza&ccedil;&atilde;o da terapia antimicrobiana&nbsp; - Apresentado por: Dr. David Nicolau</option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] Recentes  Estudos para Manejo da Sepse&nbsp; - Apresentado  por: Dr. Ederlon Rezende">[ Sess&atilde;o Plen&aacute;ria ] Recentes  Estudos para Manejo da Sepse&nbsp; - Apresentado  por: Dr. Ederlon Rezende</option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] Infec&ccedil;&otilde;es  bacterianas: epidemiologia e desafios na realidade brasileira&nbsp; - Apresentado por: Dr. Cl&oacute;vis Arns da  Cunha">[ Sess&atilde;o Plen&aacute;ria ] Infec&ccedil;&otilde;es  bacterianas: epidemiologia e desafios na realidade brasileira&nbsp; - Apresentado por: Dr. Cl&oacute;vis Arns da  Cunha</option>
+                            
+                          
+                        </select>
+                    </li>
+                    
+                     
+                    
+                    <li data-role="list-divider">Comentários e sugestões:</li>
+                    <textarea  name="textarea" id="textareaPesquisa" style="width:98%; height:200px; padding:10px; overflow:scroll; margin-left:10px;"></textarea>
+                    <input id="btSendPesquisa" type="button" value="Salvar Pesquisa" onClick="handleValidaPesquisa()">
+                    <br>
+                </ul>
+                 
+            </div>
+        
+       </div>
+         
+       
+		
+ 	</div>
+
+
+      <!-- ---------------------------------- -->
+    <!-- --------------PESQUISA 2------------ -->
+    <!-- ---------------------------------- -->
+  <div data-role="page" id="pesquisa_2" data-theme="g" >
+  
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  style="height:42px; margin-top:0px; line-height:2em;">
+                   
+          <a data-rel="" data-icon="back"  style="height:40px;" data-direction="fade" onClick="backMenuPesquisa();" >voltar</a>
+                   
+            <div style="text-align:center;padding-top:10px;" >
+                Pesquisa 2 - 7&deg; Encontro  de Especialistas em Infec&ccedil;&otilde;es no Paciente Cr&iacute;tico
+            </div>
+      
+        </div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;"> <!--id="base-bg" class=""-->
+          
+        
+           
+            <div style="padding:16px;" id="boas-vindas" >
+                <div style="padding:10px;" id="nomeDrPesquisa"></div>
+                 <p style="padding:10px;">
+É muito importante sabermos a sua opinião sobre o nosso evento. Dessa forma poderemos atendê-los cada vez melhor. Não é necessário identificar-se. Muito obrigada!
+</p>
+          <ul data-role="listview" >
+                    <li data-role="list-divider">PESQUISA SEGUNDO DIA :</li>
+                    
+                     <li>
+                        <label for="pergunta_2_1" class="select" id="label_pergunta_2_1"><strong>1)</strong>   Qual tema voc&ecirc;  achou mais interessante e relevante a partir do Segundo Dia ( 26 de Julho 2014  ) ? <br>
+   <strong>Por favor selecione a  sua resposta com base nas sess&otilde;es que voc&ecirc; assistiu .</strong></strong> </label>
+                        <select name="pergunta_2_1" id="pergunta_2_1" data-native-menu="false">
+                            <option value="">Selecione</option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] Novidades:  Papers recentes e relevantes em CSSTI e partes moles Complicadas&nbsp; - Apresentado por: Dr. Mauro Salles ">1 [ Sess&atilde;o Plen&aacute;ria ] Novidades:  Papers recentes e relevantes em CSSTI e partes moles Complicadas&nbsp; - Apresentado por: Dr. Mauro Salles </option>
+                            <option value="[ Sess&atilde;o Plen&aacute;ria ] Infec&ccedil;&otilde;es em  grupos de pacientes espec&iacute;ficos &ndash; O paciente queimado&nbsp; - ">[ Sess&atilde;o Plen&aacute;ria ] Infec&ccedil;&otilde;es em  grupos de pacientes espec&iacute;ficos &ndash; O paciente queimado&nbsp; - </option>
+                            <option value="[ Sessão Plenária ] Pneumonia hospitalar por MRSA: Experiência clínica da linezolida no Brasil - Apresentado por: Dr. Clóvis Arns da Cunha">[ Sessão Plenária ] Pneumonia hospitalar por MRSA: Experiência clínica da linezolida no Brasil - Apresentado por: Dr. Clóvis Arns da Cunha</option>
+                      
+                        </select>
+                    </li>
+
+                       <li>
+                        <label for="pergunta_2_2" class="select" id="label_pergunta_2_2"><strong>2)</strong> Quais workshop  voc&ecirc; achou mais interessante e relevante ? <br>  Por favor selecione a  sua resposta com base nas oficinas que voc&ecirc; assistiu . </label>
+                        <select name="pergunta_2_2" id="pergunta_2_2" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value="[Caso Cl&iacute;nico &ndash; Sala 1 ]  Casos desafiadores em pacientes com CSSTI e Partes Moles complicadas -  Apresentado por : Dr. Mauro Salles / Dr Felipe Tuon">[Caso Cl&iacute;nico &ndash; Sala 1 ]  Casos desafiadores em pacientes com CSSTI e Partes Moles complicadas -  Apresentado por : Dr. Mauro Salles / Dr Felipe Tuon</option>
+                            <option value=" [Caso Cl&iacute;nico &ndash; Sala 2] Caso  em PN - Apresentado por: Dr. Cl&oacute;vis Arns da Cunha / Dr Ederlon Rezende "> [Caso Cl&iacute;nico &ndash; Sala 2] Caso  em PN - Apresentado por: Dr. Cl&oacute;vis Arns da Cunha / Dr Ederlon Rezende </option>
+                            <option value="[Caso Cl&iacute;nico &ndash; Sala 1 ] Caso  em PN - Apresentado por: Dr. Cl&oacute;vis Arns da Cunha / Dr David Nicolau">[Caso Cl&iacute;nico &ndash; Sala 1 ] Caso  em PN - Apresentado por: Dr. Cl&oacute;vis Arns da Cunha / Dr David Nicolau</option>
+                             <option value="[Caso Cl&iacute;nico &ndash; Sala 2] CA -  MRSA - Apresentado por: Dr Mauro Salles / Dr Felipe Tuon">[Caso Cl&iacute;nico &ndash; Sala 2] CA -  MRSA - Apresentado por: Dr Mauro Salles / Dr Felipe Tuon</option>
+                      
+                        </select>
+                    </li>
+
+
+                       <li>
+                        <label for="pergunta_2_3" class="select" id="label_pergunta_2_3"><strong>3)</strong> Quais as informa&ccedil;&otilde;es relacionadas abaixo  que voc&ecirc; mais gostaria de receber depois de um encontro como este?  </label>
+                        <select name="pergunta_2_3" id="pergunta_2_3" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value=" Apresenta&ccedil;&atilde;o On-line dos Especialista"> Apresenta&ccedil;&atilde;o On-line dos Especialista</option>
+                            <option value="Os Estudos de Caso">Os Estudos de Caso</option>
+                            <option value="V&iacute;deos de especialistas com os slides">V&iacute;deos de especialistas com os slides</option>
+                            <option value=" Resumo das Guidelines"> Resumo das Guidelines</option>
+                            <option value="Relat&oacute;rio e banco de imagens da Reuni&atilde;o">Relat&oacute;rio e banco de imagens da Reuni&atilde;o</option>
+                      
+                        </select>
+                    </li>
+
+
+                       <li>
+                        <label for="pergunta_2_4" class="select" id="label_pergunta_2_4"><strong>4)</strong>  Como voc&ecirc;  classifica a qualidade geral do programa? </label>
+                        <select name="pergunta_2_4" id="pergunta_2_4" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Muito Bom">Muito Bom</option>
+                            <option value="Bom">Bom</option>
+                            <option value="Satisfat&oacute;rio">Satisfat&oacute;rio</option>
+                            <option value=" . S&atilde;o satisfat&oacute;rio"> . S&atilde;o satisfat&oacute;rio</option>
+                      
+                        </select>
+                    </li>
+
+                       <li>
+                        <label for="pergunta_2_5" class="select" id="label_pergunta_2_5"><strong>5)</strong> O&nbsp; conte&uacute;do do programa cient&iacute;fico agregou/  alterar&aacute; sua conduta m&eacute;dica no dia-a-dia?</strong></label>
+                        <select name="pergunta_2_5" id="pergunta_2_5" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value="SIM">SIM</option>
+                            <option value="N&Atilde;O">N&Atilde;O</option>
+                            
+                      
+                        </select>
+                    </li>
+
+                       <li>
+                        <label for="pergunta_2_6" class="select" id="label_pergunta_2_6"><strong>6)</strong>  <strong>O conte&uacute;do  cient&iacute;fico apresentado corresponde a sua realidade?</strong></strong> </label>
+                        <select name="pergunta_2_6" id="pergunta_2_6" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value="SIM">SIM</option>
+                            <option value="N&Atilde;O">N&Atilde;O</option>
+                      
+                        </select>
+                    </li>
+
+                       <li>
+                        <label for="pergunta_2_7" class="select" id="label_pergunta_2_7"><strong>7)</strong> Como voc&ecirc;  classifica a qualidade do conte&uacute;do e palestrantes ? </label>
+                        <select name="pergunta_2_7" id="pergunta_2_7" data-native-menu="false">
+                             <option value="">Selecione  </option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="Muito Bom">Muito Bom</option>
+                            <option value="Bom">Bom</option>
+                            <option value="Satisfat&oacute;rio">Satisfat&oacute;rio</option>
+                            <option value=" . S&atilde;o satisfat&oacute;rio"> . S&atilde;o satisfat&oacute;rio</option>
+                      
+                      
+                        </select>
+                    </li>
+
+                       <li>
+                        <label for="pergunta_2_8" class="select" id="label_pergunta_2_8"><strong>8)</strong> Voc&ecirc; recomendaria  um programa como este para outro colega?</strong> </label>
+                        <select name="pergunta_2_8" id="pergunta_2_8" data-native-menu="false">
+                            <option value="">Selecione  </option>
+                            <option value="SIM">SIM</option>
+                            <option value="N&Atilde;O">N&Atilde;O</option>
+                      
+                        </select>
+                    </li>
+                     
+                    
+                    <li data-role="list-divider">Comentários e sugestões:</li>
+                    <textarea  name="textarea" id="textareaPesquisa_2" style="width:98%; height:200px; padding:10px; overflow:scroll; margin-left:10px;"></textarea>
+                    <input id="btSendPesquisa" type="button" value="Salvar Pesquisa" onClick="handleValidaPesquisa2()">
+                    <br>
+                </ul>
+                 
+            </div>
+        
+       </div>
+       
+       
+     
+    
+  </div>
+
+
+
+    <!-- ---------------------------------- -->
+    <!-- --------------PESQUISA 3------------ -->
+    <!-- ---------------------------------- -->
+  <div data-role="page" id="pesquisa_3" data-theme="g" >
+  
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  style="height:42px; margin-top:0px; line-height:2em;">
+                   
+                    <a data-rel=""  style="height:40px;" data-icon="back" data-direction="fade" onClick="backMenuPesquisa();" >voltar</a>
+ 
+            <div style="text-align:center;padding-top:10px;" >
+                AVALIA&Ccedil;&Atilde;O GERAL - 7&deg; Encontro  de Especialistas em Infec&ccedil;&otilde;es no Paciente Cr&iacute;tico
+            </div>
+      
+    </div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;"> <!--id="base-bg" class=""-->
+          
+        
+           
+            <div style="padding:16px;" id="boas-vindas" >
+                <div style="padding:10px;" id="nomeDrPesquisa"></div>
+                 <p style="padding:10px;">
+É muito importante sabermos a sua opinião sobre o nosso evento. Dessa forma poderemos atendê-los cada vez melhor. Não é necessário identificar-se. Muito obrigada!
+</p>
+          <ul data-role="listview" >
+                    <li data-role="list-divider"><strong>AVALIA&Ccedil;&Atilde;O GERAL: </strong> </li>
+                     <li>
+                        <label for="pergunta_3_1" class="select" id="label_pergunta_3_1"><strong>1)</strong> Atendimento Pr&eacute;-Evento </label>
+                        <select name="pergunta_3_1" id="pergunta_3_1" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+
+                     <li>
+                        <label for="pergunta_3_2" class="select" id="label_pergunta_3_2"><strong>2)</strong> Receptivo / Transfer  </label>
+                        <select name="pergunta_3_2" id="pergunta_3_2" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                            <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+
+                     <li>
+                        <label for="pergunta_3_3" class="select" id="label_pergunta_3_3"><strong>3)</strong> Local do Evento ( Hotel ) </label>
+                        <select name="pergunta_3_3" id="pergunta_3_3" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                          <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+
+                     <li>
+                        <label for="pergunta_3_4" class="select" id="label_pergunta_3_4"><strong>4)</strong> Alimenta&ccedil;&atilde;o ( Hotel ) </label>
+                        <select name="pergunta_3_4" id="pergunta_3_4" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                           <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+
+                     <li>
+                        <label for="pergunta_3_5" class="select" id="label_pergunta_3_5"><strong>5)</strong> Recursos Audio-Visuais </strong> </label>
+                        <select name="pergunta_3_5" id="pergunta_3_5" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                          <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+
+                     <li>
+                        <label for="pergunta_3_6" class="select" id="label_pergunta_3_6"><strong>6)</strong> Comunica&ccedil;&atilde;o       do evento nas salas </label>
+                        <select name="pergunta_3_6" id="pergunta_3_6" data-native-menu="false">
+                            <option value="">Selecione sua nota</option>
+                          <option value="Excelente">Excelente</option>
+                            <option value="BOM">BOM</option>
+                            <option value="REGULAR">REGULAR</option>
+                            <option value="FRACO">FRACO</option>
+                          
+                        </select>
+                    </li>
+            
+                    <li data-role="list-divider">Comentários e sugestões:</li>
+                    <textarea  name="textarea" id="textareaPesquisa_3" style="width:98%; height:200px; padding:10px; overflow:scroll; margin-left:10px;"></textarea>
+                    <input id="btSendPesquisa" type="button" value="Salvar Pesquisa" onClick="handleValidaPesquisa3()">
+                    <br>
+                </ul>
+                 
+            </div>
+        
+       </div>
+         
+       
+    
+  </div>
+
+
+      <!-- ---------------------------------- -->
+    
+    
+    <!-- --------------------------------- -->
+    <!-- --------------VIDEO-------------- -->
+    <!-- --------------------------------- -->
+	<div data-role="page" id="video" data-theme="g" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  >
+  
+            <div style="float:left; padding:5px;" >
+                <a href="#defaultpanel">
+                    <img src="images/menu-panel-bars.png" id="menu" >
+                </a>
+            </div>
+            
+            <div style="text-align:center;padding-top:10px;" >
+                V&iacute;deo institucional
+            </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content"> <!--id="base-bg" class=""-->
+       		
+        
+            <div style="position:absolute; right:20px; bottom:30px;z-index:999;">
+                <a href="#pagesobre" data-transition="fade"><img src="images/img_icon_info.png" width="25"></a>
+            </div>
+           
+            <div style="border-radius:10px; padding:5px;" id="boas-vindas" >
+            <ul data-role="listview" data-inset="true" data-theme="c">
+                <li><a href="#ViewVideo" onClick="handleVideo('video2')">Ver vídeo Institucional</a></li>
+            </ul>
+                
+			 <script>
+	
+	
+  /*var v = document.getElementById("movie");
+  v.onclick = function() {
+    if (v.paused) {
+      v.play();
+    } else {
+      v.pause();
+    }
+  };
+  */
+</script>
+            </div>
+        
+       </div>
+       
+       
+       <!-- Menu  -->
+       <div data-role="panel" id="defaultpanel" style="background-image:url(images/template_ipad/images/img_bg_menu.png); background-size:276px 48px;">
+       <div style="position:absolute; background-color:#666; height:auto;bottom:0px; width:273px;left:-0px; background-image:url(images/template_ipad/images/bg_menu.jpg);height:768px; background-size:100%;"></div>
+            <ul data-role="listview" data-divider-theme="g" id="ulMenuVideo" >
+    
+                
+                
+            </ul>
+        </div>
+		
+ 	</div>
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------VIEW VIDEOS--------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="page-view-video" data-theme="c" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  >
+  
+            <a data-rel="back" data-icon="delete" data-direction="fade" onClick="handleResetVideo();">Fechar</a>
+            <div style="text-align:center;padding-top:5px; line-height:2em;" id="" > Vídeo</div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" style="margin-left:-4px; padding:5px;">
+       <video id="movie" width="100%" height="700px" preload controls autoplay=true>
+                  <source src="" />
+                </video>
+       </div>
+       
+ 	</div>
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- --------------PAGE DETALHES------- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="page-detalhes" data-theme="c" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  >
+  
+            <a data-rel="back" data-icon="back" data-direction="fade" onClick="reseteUl();">voltar</a>
+            <div style="text-align:center;padding-top:5px; line-height:2em;" id="textPageDetalhe" > </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+       <div data-role="content" style="margin-left:-4px; padding:5px;">
+       
+            <div style="border-radius:10px; padding:5px;" id="descricao-page-detalhes" ></div>
+            
+        	 <div>
+            	<ul data-role="listview" data-inset="true" id="pageDetalheUl"  data-theme="c"></ul>
+            </div>
+       </div>
+       
+ 	</div>
+
+
+  
+    
+    
+    <!-- ---------------------------------- -->
+    <!-- ---PAGE DETALHES Mini Curriculo--- -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" id="page-miniCurriculo" data-theme="c" >
+	
+       <!-- header -->
+       <div  data-role="header" class="ui-header" data-theme="g"  >
+  
+            <a data-rel="back" data-icon="delete" data-direction="right">fechar</a>
+            <div style="text-align:center;padding-top:5px; line-height:2em;" id="nomePalestrante" > </div>
+    	
+		</div>
+        
+        
+       <!-- Content -->
+
+       
+
+
+       <div data-role="content" data-theme="c"    style="margin-left:-4px; padding:5px;">
+            
+         <div style="border-radius:10px; padding:50px;" id="descricao-page-detalhes-mini-curriculo"    >
+
+
+         </div>  
+       </div>
+     
+     </div>
+    
+ 	<!-- ---------------------------------- -->
+    <!-- --------------INFO MAX------------ -->
+    <!-- ---------------------------------- -->
+	<div data-role="page" data-theme="c" id="pagesobre">
+		
+        <!-- HEADER -->
+    	<div data-role="header" data-theme="g"  >
+        <h1>Sobre</h1>
+  			<a data-rel="back" data-icon="back">voltar</a>
+		</div>
+    	<!-- /HEADER -->
+   		
+        
+    	<!-- CONTENT -->
+	  <div data-role="content" data-theme="c" style="margin-left:-4px; padding:5px;">
+       <div style="position:absolute; padding-left:10px; bottom:20px;">
+            <a href="#" onClick="handlerEraseDb()"><img src="images/img_icon_info.png" width="25"></a>
+        </div>
+       	<p></p>
+   		
+       		<h2 align="justify" style="padding:10px;font-size:11px;">A Max Experience foi criada em 2010 a partir da necessidade de demandas de nossos clientes e de diversas ag&ecirc;ncias de eventos por tecnologia, inova&ccedil;&atilde;o, alta qualidade e resultado.<br> <br>
+
+Um dos principais objetivos da Max Experience &eacute; proporcionar experi&ecirc;ncias marcantes a partir do entendimento das necessidades dos nossos clientes para um evento, um treinamento, na exposi&ccedil;&atilde;o do seu produto no PDV etc.<br><br>
+
+Procuramos nos concentrar no planejamento estrat&eacute;gico, uma vez que atualmente temos diversos recursos tecnol&oacute;gicos para alcan&ccedil;ar os resultados que nossos clientes precisam.<br><br>
+
+Atuamos em 3 &aacute;reas:
+ </h2>
+    
+    		<div data-role="collapsible-set" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            
+            	<div data-role="collapsible">
+                <h3>Educacional:</h3>
+                <h2 align="justify" style="padding:10px;font-size:11px;">Avan&ccedil;os da neuroci&ecirc;ncia demonstraram que as emo&ccedil;&otilde;es contribuem de forma determinante para o aprendizado, especialmente no processo de aprendizado do adulto - andragogia.<br>
+    
+    Nossas propostas passam pelo entendimento do conte&uacute;do, do p&uacute;blico alvo, do momento a ser aplicado, local, entre outros fatores que podem interferir na absor&ccedil;&atilde;o da mensagem ou gerar algum ru&iacute;do que dificulte a compreens&atilde;o.<br>
+    
+    Na pr&aacute;tica, a partir deste entendimento, identificamos, desenvolvemos e implementamos o melhor recurso para alcan&ccedil;ar o seu objetivo. S&atilde;o recursos como Cinema 3D e 4D, aromatiza&ccedil;&atilde;o de ambientes, proje&ccedil;&otilde;es volum&eacute;tricas e mapeadas, jogos para SmartPhones, Tablets, Sensores de movimentos, etc.<br>
+     </h2>
+           </div>
+        
+        		<div data-role="collapsible">
+        	<h3>Motivacional:</h3>
+        	<h2 align="justify" style="padding:10px;font-size:11px;">A versatilidade com que a Max Experience trabalha, garante o sucesso que temos constatado por mais de 20 anos.<br>
+
+Recursos motivacionais aplicados em um formato l&uacute;dico e descontra&iacute;do s&atilde;o bastante utilizadas para gerar integra&ccedil;&atilde;o de pessoas, estimular a competitividade, persist&ecirc;ncia, comprometimento, sem deixar de lado a transmiss&atilde;o de mensagens chave para empresa.<br>
+
+Varia&ccedil;&otilde;es desta linha poder&atilde;o ser direcionadas para atividades recreativas como buffets ou festas corporativas.
+ </h2>
+    	</div>
+        
+        		<div data-role="collapsible">
+        	<h3>Institucional:</h3>
+        	<h2 align="justify" style="padding:10px;font-size:11px;">A solu&ccedil;&atilde;o correta para promover sua marca ou produto est&aacute; aqui. O marketing institucional costuma apresentar diversos desafios na customiza&ccedil;&atilde;o de atividades e ferramentas, devido &agrave; necessidade do enquadramento em Compliances e regras internas.<br>
+
+Mais do que oferecer uma ferramenta pronta ou customizada, buscamos sempre viabilizar suas ideias, dentro dos objetivos, normas, caracter&iacute;sticas e limita&ccedil;&otilde;es impostas pelo projeto.
+ </h2>
+    	</div>
+        
+      		</div>
+    
+      		<p style="font-size:11px;" align="center"><a href="#" id="viewmax" onClick="handleMax()">Max Experience Eventos</a></p>
+        	
+        </div>    
+    	<!-- /CONTENT -->
+        
+    </div>
+    
+  
+</body>
+</html>
